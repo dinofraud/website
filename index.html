@@ -1,78 +1,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>JLB & Lucas' Trip to Winton</title>
-<!-- for-mobile-apps -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Dinosaur Fraud" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- //for-mobile-apps -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- js -->
-<script src="js/jquery-1.11.1.min.js"></script>
-<!-- //js -->
-<!-- pop-up-script -->
-<script src="js/jquery.chocolat.js"></script>
-		<link rel="stylesheet" href="css/chocolat.css" type="text/css" media="screen" charset="utf-8">
-		<!--light-box-files -->
-		<script type="text/javascript" charset="utf-8">
-		$(function() {
-			$('.gallery-grid a').Chocolat();
-		});
-		</script>
-<!-- //pop-up-script -->
-<!-- gallery -->
-<link rel="stylesheet" type="text/css" href="css/component.css" />
-<script src="js/modernizr.custom.js"></script>
-<!-- //gallery -->
-<!--FlexSlider-->
-					<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
-					<script defer src="js/jquery.flexslider.js"></script>
-					<script type="text/javascript">
-					$(window).load(function(){
-					  $('.flexslider').flexslider({
-						animation: "slide",
-						start: function(slider){
-						  $('body').removeClass('loading');
-						}
-					  });
-					});
-				  </script>
-			<!--End-slider-script-->
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Crete+Round:400,400italic' rel='stylesheet' type='text/css'>
+    <title>JLB & Lucas' Trip to Winton</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Dinosaur Fraud" />
+    
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+            function hideURLbar(){ window.scrollTo(0,1); } </script>
+    
+    <!-- //for-mobile-apps -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    
+    <!-- pop-up-script -->
+    <script src="js/jquery.chocolat.js"></script>
+    <link rel="stylesheet" href="css/chocolat.css" type="text/css" media="screen" charset="utf-8">
+    
+    <!--light-box-files -->
+    <script type="text/javascript" charset="utf-8">
+        $(function() {
+            $('.gallery-grid a').Chocolat();
+        });
+    </script>
+    <!-- //pop-up-script -->
+    
+    <script>
+        function getTimeRemaining(endtime){
+          var t = Date.parse(endtime) - Date.parse(new Date());
+          var seconds = Math.floor( (t/1000) % 60 );
+          var minutes = Math.floor( (t/1000/60) % 60 );
+          var hours = Math.floor( (t/(1000*60*60)) % 24 );
+          var days = Math.floor( t/(1000*60*60*24) );
+          return {
+            'total': t,
+            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds
+          };
+        };
+        
+        function updateClock(){
+          var t = getTimeRemaining(endtime);
+          clock.innerHTML = 'Leaving in days: ' + t.days + ' hours: '+ t.hours + ' minutes: ' + t.minutes + ' seconds: ' + t.seconds;
+          if(t.total<=0){
+            clearInterval(timeinterval);
+          }
+        };
+        
+        function initializeClock(id, endtime){
+          var clock = document.getElementById(id);
+          var timeinterval = setInterval(function(){
+            var t = getTimeRemaining(endtime);
+            clock.innerHTML = 'Leaving in days: ' + t.days + ' hours: '+ t.hours + ' minutes: ' + t.minutes + ' seconds: ' + t.seconds;
+            if(t.total<=0){
+              clearInterval(timeinterval);
+            }
+          },1000);
+        }
+    </script>
+
+    <!-- gallery -->
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <script src="js/modernizr.custom.js"></script>
+    <!-- //gallery -->
+    
+    <!--FlexSlider-->
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+        <script defer src="js/jquery.flexslider.js"></script>
+        <script type="text/javascript">
+            $(window).load(function(){
+              $('.flexslider').flexslider({
+                animation: "slide",
+                start: function(slider){
+                  $('body').removeClass('loading');
+                }
+              });
+        });
+          </script>
+    <!--End-slider-script-->
+    
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Crete+Round:400,400italic' rel='stylesheet' type='text/css'>
 </head>
 	
 <body>
-<!-- banner -->
+    <!-- banner -->
 	<script src="js/jquery.progresstracker.js"></script>	
-			<script>
-				(function() {
-					$('body').progressTracker({
-						linking : true,
-						tooltip : "constant",
-						negativeTolerance : 0,
-						positiveTolerance : 0,
-						displayWhenActive : true,
-						disableBelow : 600
-					});
-				})();
-			</script>
+    <script>
+        (function() {
+            $('body').progressTracker({
+                linking : true,
+                tooltip : "constant",
+                negativeTolerance : 0,
+                positiveTolerance : 0,
+                displayWhenActive : true,
+                disableBelow : 600
+            });
+        })();
+    </script>
+    
 	<div class="banner pt-section" data-name="home" id="ptsection-one">
 		<div class="container">
 			<div class="header">
 				<div class="logo">
-					<a href="index.html">Dinosaur Fraud?<span>Dinosaur Fraud</span></a>
+					<a href="index.html">Dinosaur Fraud?</a>
 				</div>
 				<div class="reserve">
 					<a data-toggle="modal" data-target=".bs-example-modal-md" href="#" class="b-link-stripe b-animate-go  thickbox hvr-shutter-out-vertical">Profile</a>
 				</div>
 				<div class="clearfix"></div>
-					<script src="js/bootstrap.min.js"></script>
+					<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 					<!----start-model-box---->
 						<a data-toggle="modal" data-target=".bs-example-modal-md" href="#"> </a>
 						<div class="modal fade bs-example-modal-md light-box" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -103,8 +147,9 @@
 						    </div>
 						  </div>
 						</div>
-		<!----end-model-box---->
+          <!----end-model-box---->
 			</div>
+            
 			<!-- Slider-starts-Here -->
 				<script src="js/responsiveslides.min.js"></script>
 				 <script>
@@ -128,6 +173,7 @@
 				    });
 				  </script>
 			<!--//End-slider-script -->
+            
 			<div  id="top" class="callbacks_container wow fadeInUp" data-wow-delay="0.5s">
 				<ul class="rslides" id="slider3">
 					<li>
@@ -138,19 +184,19 @@
 					</li>
 					<li>
 						<div class="banner-info">
-							<h1>qui dolorem eum fugiat quo voluptas</h1>
+							<h1>JLB, master skepting</h1>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Duis aute irure dolor in reprehenderit in voluptate.</p>
 						</div>
 					</li>
 					<li>
 						<div class="banner-info">
-							<h1>perferendis doloribus asperiores repellat</h1>
+							<h1>Lucas, Dino Hunter</h1>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Duis aute irure dolor in reprehenderit in voluptate.</p>
 						</div>
 					</li>
 				</ul>
-			</div>
-					
+            </div>
+            
 			<div class="banner-info-bottom">
 				<div class="banner-info-bottom-left">
 					<ul>
@@ -165,6 +211,7 @@
 				</div>
 				<div class="clearfix"> </div>
 			</div>
+            
 			<div class="progress-tracker constant">
 				<ul>
 					<li class="section-ptsection-one">
@@ -199,8 +246,9 @@
 			</div>	
 		</div>
 	</div>
-<!-- //banner -->
-<!-- banner-bottom -->
+    <!-- //banner -->
+    
+    <!-- banner-bottom -->
 	<div class="banner-bottom pt-section" data-name="about" id="ptsection-two">
 		<div class="container">
 			<div class="banner-bottom-grids">
@@ -259,11 +307,17 @@
 			</div>
 		</div>
 	</div>
-<!-- //banner-bottom -->
-<!-- services -->
+    <!-- //banner-bottom -->
+    
+    <!-- services -->
 	<div class="services pt-section" data-name="services" id="ptsection-three">
 		<div class="container">
-			<h3>Services</h3>
+            <h3 id="clockdiv">
+                Leaving in Days: <span class="days"></span> Hours: <span class="hours"></span> Minutes: <span class="minutes"></span> Seconds: <span class="seconds"></span>
+            </h3>
+            
+            <div id="countdown"></div>
+            
 			<section class="slider">
 				<div class="flexslider">
 					<ul class="slides">
@@ -368,8 +422,9 @@
 			</section>
 		</div>
 	</div>
-<!-- //services -->
-<!-- team -->
+    <!-- //services -->
+    
+    <!-- team -->
 	<div class="team pt-section" data-name="Team" id="ptsection-four">
 		<div class="container">
 			<h3>Meet Our Team</h3>
@@ -467,10 +522,11 @@
 						</article>
 					</div>
 				</div>
-						<script src="js/jquery.wmuSlider.js"></script> 
-					  <script>
-						$('.example1').wmuSlider();         
-					 </script> 
+                
+                <script src="js/jquery.wmuSlider.js"></script> 
+                <script>
+                    $('.example1').wmuSlider();         
+                 </script> 
 
 			</div>
 		</div>
@@ -621,8 +677,8 @@
 				<div class="clearfix"> </div>
 			</ul>
 	</div>
-<!-- //gallery -->
-<!-- testimonials -->
+    <!-- //gallery -->
+    <!-- testimonials -->
 	<div class="testimonials pt-section" data-name="Testimonials" id="ptsection-six">
 		<div class="container">
 			<h3>Testimonials</h3>
@@ -657,8 +713,9 @@
 			</div>
 		</div>
 	</div>
-<!-- //testimonials -->
-<!-- contact -->
+    <!-- //testimonials -->
+    
+    <!-- contact -->
 	<div class="contact pt-section" data-name="Contact" id="ptsection-seven">
 		<div class="map">
 			<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d453164.71153441124!2d143.03065137943554!3d-22.381367073147345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sau!4v1473247388862" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
@@ -723,13 +780,24 @@
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-<!-- contact -->
-<!-- footer -->
+    <!-- contact -->
+    
+    <!-- footer -->
 	<div class="footer">
 		<div class="container">
 			<p>Bitcoin Tips 1Dino7aErWmuA9BsTrw2R5vS99DcFvPAAw</p>
 		</div>
 	</div>
-<!-- //footer -->
+    <!-- //footer -->
+    
+    <script>
+        $(document).ready(function() 
+            { 
+                var deadline = 'December 16 2016 15:00:00 GMT+1000';
+                initializeClock('clockdiv', deadline);
+            });
+        
+    </script>
+    <script type="text/javascript" src="js/jquery.countdown.js"></script>
 </body>
 </html>
